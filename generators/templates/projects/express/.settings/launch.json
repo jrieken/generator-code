@@ -28,7 +28,7 @@
 			"outDir": null
 		}, 
 		{
-			"name": "Tests",
+			"name": "Debug Tests",
 			"type": "node",
 			// Notice, we bypass the launcher and start the test runner directly
 			"program": "node_modules/mocha/bin/_mocha",
@@ -40,12 +40,12 @@
 			"env": { }
 		}, 
 		{
-			"name": "Attach",
+			"name": "Attach to NodeMon + BrowserSync instance",
 			"type": "node",
 			// VS Code only supports 'localhost' at this time
 			"address": "localhost",
-			// Port to attach to.
-			"port": 5858
+			// Port to attach to, must match port in gulpfile.js
+			"port": 52977
 		}
 	]
 }

@@ -1,6 +1,6 @@
 {
   "name": "<%= appName %>",
-  "description": "<%= appName %> - a project Generated from VS Code generator",
+  "description": "<%= appName %> Sample Application",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -18,9 +18,11 @@
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.8.2",
     "gulp": "^3.9.0",
     "gulp-less": "^3.0.3",
     "gulp-mocha": "^2.1.2",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "nodemon": "^1.4.0"
   }
 }
