@@ -8,7 +8,7 @@ This is an the [express-generator](http://expressjs.com/starter/generator.html) 
 This example illustrates:
 - **Great IntelliSense**: [TypeScript definition files](https://github.com/borisyankov/DefinitelyTyped) provide IntelliSense for Node, Express, Mocha, and Gulp. Use [tsd](http://definitelytyped.org/tsd/) to install additional typings.
 
-- **Iterative Development**: Use [BrowserSync](http://www.browsersync.io/) and [NodeMon](http://nodemon.io/) to automatically recycle your client and server while developing in Visual Studio Code. Run the `browser-sync` gulp task from the Terminal.
+- **Iterative Development**: Use [BrowserSync](http://www.browsersync.io/) and [NodeMon](http://nodemon.io/) to automatically recycle your client and server while developing in Visual Studio Code. Run `gulp browser-sync` from the Terminal.
 
 - **Test**: [Mocha](http://mochajs.org/) is a popular test framework for Node applications. Press `Ctrl+Shift+T` (Windows, Linux) or `Cmd+Shift+T` (OS X) to run the tests.
 
