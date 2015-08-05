@@ -1,9 +1,9 @@
 {
   "name": "generator-code",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Yeoman generator",
   "license": "MIT",
-  "main": "app/index.js",
+  "main": "generators/app/index.js",
   "author": {
     "name": "Chris Dias",
     "email": "cdias@microsoft.com",

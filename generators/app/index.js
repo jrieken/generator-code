@@ -86,9 +86,10 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         
         this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
         this.copy(this.sourceRoot() + '/README.md', this.applicationName + '/README.md');
+        this.copy(this.sourceRoot() + '/LICENSE', this.applicationName + '/LICENSE');
         this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
         this.copy(this.sourceRoot() + '/jsconfig.json', this.applicationName + '/jsconfig.json');
-        this.copy(this.sourceRoot() + '/.gitignore', this.applicationName + '/.gitignore');
+        this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
       
         this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
         this.directory(this.sourceRoot() + '/bin', this.applicationName + '/bin');
