@@ -5,7 +5,6 @@ var mocha = require('gulp-mocha');
 var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 
-//************************
 gulp.task('less', function () {
     return gulp.src('./public/stylesheets/**/*.less')
         .pipe(less({
@@ -14,14 +13,12 @@ gulp.task('less', function () {
         .pipe(gulp.dest('./public/stylesheets'));
 });
 
-//************************
 gulp.task('test', function () {
     return gulp.src('./tests/test*.js', { read: false })
     // gulp-mocha needs filepaths so you can't have any plugins before it 
         .pipe(mocha());
 });
 
-//************************
 gulp.task('browser-sync', ['nodemon'], function () {
     browserSync.init(null, {
         proxy: "http://localhost:3000",
@@ -31,14 +28,12 @@ gulp.task('browser-sync', ['nodemon'], function () {
     });
 });
 
-//************************
 gulp.task('nodemon', function (cb) {
     var started = false;
 
     return nodemon({
         script: './bin/www',
-        nodeArgs: ['--debug-brk=52977 --nolazy'], //lets you attach the debugger to running instance
-        watch: ['app.js', 'bin/www', 'views/**/*.*', 'routes/**/*.js']
+        watch: ['*.js', 'bin/www', 'views/**/*.*', 'routes/**/*.js']
     }).on('start', function () {
         if (!started) {
             cb();
@@ -52,3 +47,5 @@ gulp.task('nodemon', function (cb) {
         }, 500);  // browserSync reload delay
     });
 });
+
+gulp.task('default', ['less']);
