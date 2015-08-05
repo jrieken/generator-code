@@ -98,8 +98,9 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
 
     this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
-    this.copy(this.sourceRoot() + '/README.md', this.applicationName + '/README.md');
-    this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/gettingstarted.md');
+    //this.copy(this.sourceRoot() + '/README.md', this.applicationName + '/README.md');
+    this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
+    this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
     this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
     this.copy(this.sourceRoot() + '/jsconfig.json', this.applicationName + '/jsconfig.json');
     this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
