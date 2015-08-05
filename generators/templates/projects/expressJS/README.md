@@ -8,7 +8,7 @@ This example illustrates:
 
 - **Test**: [Mocha](http://mochajs.org/) is a popular test framework for Node applications. Press `Ctrl+Shift+T` (Windows, Linux) or `Cmd+Shift+T` (OS X) to run the tests.
 
-- **StyleSheets**: [LESS](http://lesscss.org/) is a CSS pre-processor that extends CSS to allow for typical programming construcs such as variables, mixins, and functions. To compile your .less file to .css press `Ctrl+Shift+T` (Windows, Linux) or `Cmd+Shift+T` (OS X).
+- **StyleSheets**: [LESS](http://lesscss.org/) is a CSS pre-processor that extends CSS to allow for typical programming construcs such as variables, mixins, and functions. To compile your .less file to .css press `Ctrl+Shift+B` (Windows, Linux) or `Cmd+Shift+B` (OS X).
 
 - **Debugging**: [Launch Configurations](https://code.visualstudio.com/Docs/debugging) are used for running your application under the debugger as well as launching the Mocha tests under the debugger. Open the Debug viewlet, select `Launch ./bin/www` or press `F5` to run the application.
 
