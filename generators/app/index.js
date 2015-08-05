@@ -24,8 +24,8 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
       name: 'type',
       message: 'What type of application do you want to create?',
       choices: [{
-          name: 'Node/Express application implemented in JavaScript',
-          value: 'express'
+          name: 'Node/Express application (JavaScript)',
+          value: 'expressJS'
         }
       ]
     }];
@@ -40,7 +40,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     var done = this.async();
     var app = '';
     switch (this.type) {
-      case 'express':
+      case 'expressJS':
         app = 'expressApp';
         break;
     }
@@ -64,8 +64,8 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
 
     switch (this.type) {
 
-      case 'express':
-        this._writingExpress();
+      case 'expressJS':
+        this._writingExpressJS();
         break;
 
       default:
@@ -73,7 +73,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     }
   },
 
-  _writingExpress: function () {
+  _writingExpressJS: function () {
 //        console.log('source root', this.sourceRoot());
 //        console.log('destination root', this.destinationRoot());
         var context = {
@@ -113,8 +113,15 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
   },
   
   end: function() {
+    
     this.log('\r\n');
-    this.log('Your project is now created, you can now open it in Visual Studio Code!');
+    this.log('Your project is now created! To start Visual Studio Code, use the following commands:');
+    this.log(chalk.bold('cd ' + this.applicationName));
+    this.log(chalk.bold('code .'));
+    
+    this.log('\r\n');
+    this.log('For more information, please visit http://code.visualstudio.com and follow us on twitter @code.');
+    
     if (this.notice) {
         this.log(chalk.red(this.notice));      
     }
