@@ -1,12 +1,15 @@
-#!/usr/bin/env node
+
+/// <reference path='../typings/tsd.d.ts' />
 
 /**
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('<%= appName %>:server');
-var http = require('http');
+import app = require('../app');
+import debugModule = require('debug');
+import http = require('http');
+
+var debug = debugModule('<%= appName %>:server');
 
 /**
  * Get port from environment and store in Express.
@@ -60,7 +63,7 @@ function onError(error) {
 
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
-    : 'Port ' + port;
+    : 'Port ' + port
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -86,5 +89,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.log('Listening on ' + bind);
+  debug('Listening on ' + bind);
 }

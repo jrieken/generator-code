@@ -1,10 +1,10 @@
 {
   "name": "<%= appName %>",
-  "description": "<%= appName %> Sample Application (JavaScript)",
+  "description": "<%= appName %> Sample Application (TypeScript)",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./bin/www.js",
     "test": "mocha ./tests/test.js"
   },
   "dependencies": {
@@ -23,6 +23,8 @@
     "gulp-less": "^3.0.3",
     "gulp-mocha": "^2.1.2",
     "gulp-nodemon": "^2.0.3",
+    "gulp-tsc": "^1.1.0",
+    "gulp-typescript": "^2.8.0",
     "mocha": "^2.2.5",
     "nodemon": "^1.4.0"
   }

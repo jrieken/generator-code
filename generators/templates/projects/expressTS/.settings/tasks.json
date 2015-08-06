@@ -1,0 +1,29 @@
+// {
+//     "version": "0.1.0",
+//     "command": "tsc",
+//     "isShellCommand": true,
+//     "problemMatcher": "$tsc",
+//     "showOutput": "always"
+// }
+
+{
+    "version": "0.1.0",
+    "command": "gulp",
+    "isShellCommand": true,
+    "args": [
+        "--no-color"
+    ],
+    "tasks": [
+        {
+            "taskName": "test",
+            "args": [],
+            "isTestCommand": true
+        },
+        {
+            "taskName": "less",
+            "showOutput": "never",
+            "isBuildCommand": true
+        }
+        
+    ]
+}

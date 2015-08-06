@@ -27,10 +27,15 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
       type: 'list',
       name: 'type',
       message: 'What type of application do you want to create?',
-      choices: [{
-        name: 'Node/Express application (JavaScript)',
-        value: 'expressJS'
-      },
+      choices: [
+        {
+          name: 'Node/Express application (' + chalk.bold('JavaScript') + ')',
+          value: 'expressJS'
+        },
+        {
+          name: 'Node/Express application (' + chalk.bold('TypeScript') + ')',
+          value: 'expressTS'
+        },
         {
           name: 'ASP.NET ' + chalk.bold('v5') +' Application',
           value: 'aspnet'
@@ -46,17 +51,16 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
 
   askForName: function () {
     var done = this.async();
-    var app = '';
+    var app = 'expressApp';
+    var prompts = [{
+      name: 'applicationName',
+      message: 'What\'s the name of your application?',
+      default: app
+    }];
 
     switch (this.type) {
       case 'expressJS':
-        app = 'expressApp';
-        var prompts = [{
-          name: 'applicationName',
-          message: 'What\'s the name of your application?',
-          default: app
-        }];
-
+      case 'expressTS':
         this.prompt(prompts, function (props) {
           this.templatedata.namespace = props.applicationName;
           this.templatedata.applicationname = props.applicationName;
@@ -79,6 +83,9 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
       case 'expressJS':
         this._writingExpressJS();
         break;
+      case 'expressTS':
+        this._writingExpressTS();
+        break;
       case 'aspnet':
         //aspnet generator will do its own writing
         break;
@@ -98,15 +105,43 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
 
     this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
-    //this.copy(this.sourceRoot() + '/README.md', this.applicationName + '/README.md');
     this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
     this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
     this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
     this.copy(this.sourceRoot() + '/jsconfig.json', this.applicationName + '/jsconfig.json');
     this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
+    this.template(this.sourceRoot() + '/bin/www', this.applicationName + '/bin/www', context);
 
     this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
-    this.directory(this.sourceRoot() + '/bin', this.applicationName + '/bin');
+    this.directory(this.sourceRoot() + '/images', this.applicationName + '/images');
+    this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
+    this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
+    this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
+    this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');
+    this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
+  },
+  
+  _writingExpressTS: function () {
+    var context = {
+      appName: this.applicationName
+    };
+
+    this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
+
+    this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
+
+    this.copy(this.sourceRoot() + '/app.ts', this.applicationName + '/app.ts');
+    this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
+    this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
+    this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
+    this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
+    this.copy(this.sourceRoot() + '/tsconfig.json', this.applicationName + '/tsconfig.json');
+    this.copy(this.sourceRoot() + '/tsd.json', this.applicationName + '/tsd.json');
+    this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
+    this.template(this.sourceRoot() + '/bin/www.ts', this.applicationName + '/bin/www.ts', context);
+    this.template(this.sourceRoot() + '/bin/www.js', this.applicationName + '/bin/www.js', context);
+
+    this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
     this.directory(this.sourceRoot() + '/images', this.applicationName + '/images');
     this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
     this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
@@ -119,6 +154,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     switch (this.type) {
 
       case 'expressJS':
+      case 'expressTS':
         if (this.noNpmInstall) {
           return;
         } else {
@@ -145,6 +181,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     switch (this.type) {
 
       case 'expressJS':
+      case 'expressTS':
         this.log('\r\n');
         this.log('Your project is now created! To start Visual Studio Code, use the following commands:');
         this.log(chalk.bold('cd ' + this.applicationName));
