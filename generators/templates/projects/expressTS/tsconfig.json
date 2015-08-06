@@ -1,7 +1,11 @@
 {
 	"compilerOptions": {
 		"target": "ES5",
-		"module": "commonjs"
+		"module": "commonjs",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "removeComments": false,
+        "preserveConstEnums": true
 	},
 	"files": [
 		"./bin/www.ts",

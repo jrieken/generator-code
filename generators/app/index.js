@@ -103,7 +103,6 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
 
     this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
-
     this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
     this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
     this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
@@ -115,6 +114,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
     this.directory(this.sourceRoot() + '/images', this.applicationName + '/images');
     this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
+    this.directory(this.sourceRoot() + '/styles', this.applicationName + '/styles');
     this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
     this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
     this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');
@@ -129,7 +129,6 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
 
     this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
-
     this.copy(this.sourceRoot() + '/app.ts', this.applicationName + '/app.ts');
     this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
     this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
@@ -144,6 +143,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
     this.directory(this.sourceRoot() + '/images', this.applicationName + '/images');
     this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
+    this.directory(this.sourceRoot() + '/styles', this.applicationName + '/styles');
     this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
     this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
     this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');

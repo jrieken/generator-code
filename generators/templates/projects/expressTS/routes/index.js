@@ -4,4 +4,8 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
     res.render('index', { title: 'Visual Studio Code!' });
 });
+/* GET readme. */
+router.get('/readme', function (req, res, next) {
+    res.render('readme');
+});
 module.exports = router;

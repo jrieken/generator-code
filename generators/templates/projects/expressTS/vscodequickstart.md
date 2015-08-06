@@ -10,9 +10,11 @@ This example illustrates:
 
 - **Iterative Development**: Use [BrowserSync](http://www.browsersync.io/) and [NodeMon](http://nodemon.io/) to automatically recycle your client and server while developing in Visual Studio Code. Run `gulp browser-sync` from the Terminal.
 
+- **Build**: Compile your [TypeScript](http://typescriptlang.org/) files to JavaScript by pressing `Ctrl+Shift+B` (Windows, Linux) or `Cmd+Shift+B` (OS X). 
+
 - **Test**: [Mocha](http://mochajs.org/) is a popular test framework for Node applications. Press `Ctrl+Shift+T` (Windows, Linux) or `Cmd+Shift+T` (OS X) to run the tests.
 
-- **StyleSheets**: [LESS](http://lesscss.org/) is a CSS pre-processor that extends CSS to allow for typical programming construcs such as variables, mixins, and functions. To compile your .less file to .css press `Ctrl+Shift+B` (Windows, Linux) or `Cmd+Shift+B` (OS X).
+- **StyleSheets**: [LESS](http://lesscss.org/) is a CSS pre-processor that extends CSS to allow for typical programming construcs such as variables, mixins, and functions. To compile your .less file to .css press `Ctrl+P` (Windows, Linux) or `Cmd+P` (OS X) to bring up the Command Palette, and then type in `task less`.
 
 - **Debugging**: [Launch Configurations](https://code.visualstudio.com/Docs/debugging) are used for running your application under the debugger as well as launching the Mocha tests under the debugger. Open the Debug viewlet, select `Launch ./bin/www` and press `F5` to run the application.
 

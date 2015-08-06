@@ -6,3 +6,4 @@
 /// <reference path="node/node.d.ts" />
 /// <reference path="serve-favicon/serve-favicon.d.ts" />
 /// <reference path="mocha/mocha.d.ts" />
+/// <reference path="gulp/gulp.d.ts" />

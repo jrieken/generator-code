@@ -13,8 +13,8 @@
         },
         {
             "taskName": "less",
-            "showOutput": "never",
-            "isBuildCommand": true
+            "isBuildCommand": true,
+            "problemMatcher": "$lessCompile"
         }
         
     ]
