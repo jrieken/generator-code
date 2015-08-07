@@ -129,6 +129,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         this.copy(this.sourceRoot() + '/jsconfig.json', this.applicationName + '/jsconfig.json');
         this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
         break;
+        
       case 'expressTS':
         this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
         //copy ts specific files
@@ -139,8 +140,9 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         this.copy(this.sourceRoot() + '/tsconfig.json', this.applicationName + '/tsconfig.json');
         this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
         break;
+        
       default:
-        // unknown
+        // unknown why we are here, get out!
         return;
     }
     
