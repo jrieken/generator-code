@@ -90,10 +90,9 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
 
     switch (this.type) {
       case 'expressJS':
-        this._writingExpressJS();
-        break;
+        // fall through
       case 'expressTS':
-        this._writingExpressTS();
+        this._writingExpress();
         break;
       case 'aspnet':
         //aspnet generator will do its own writing
@@ -104,62 +103,58 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     }
   },
 
-  _writingExpressJS: function () {
+  _writingExpress: function () {
+    
     var context = {
       appName: this.applicationName
     };
 
-    this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
-
-    this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
-    this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
+    //copy common files
+    this.sourceRoot(path.join(__dirname, '../templates/projects/expressCommon'));
+    
+    this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
+    this.directory(this.sourceRoot() + '/styles', this.applicationName + '/styles');
+    this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');
+    this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
+    this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
     this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
+    this.copy(this.sourceRoot() + '/tsd.json', this.applicationName + '/tsd.json');
+        
+    switch (this.type) {
+      case 'expressJS':
+        this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
+        //copy js specific files
+        this.template(this.sourceRoot() + '/bin/www', this.applicationName + '/bin/www', context);
+        this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
+        this.copy(this.sourceRoot() + '/jsconfig.json', this.applicationName + '/jsconfig.json');
+        this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
+        break;
+      case 'expressTS':
+        this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
+        //copy ts specific files
+        this.template(this.sourceRoot() + '/bin/www.ts', this.applicationName + '/bin/www.ts', context);
+        this.template(this.sourceRoot() + '/bin/www.js', this.applicationName + '/bin/www.js', context);
+        this.copy(this.sourceRoot() + '/app.ts', this.applicationName + '/app.ts');
+        this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
+        this.copy(this.sourceRoot() + '/tsconfig.json', this.applicationName + '/tsconfig.json');
+        this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
+        break;
+      default:
+        // unknown
+        return;
+    }
+    
+    // common file and folder names (content is different)
+    this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
     this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
     this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
-    this.copy(this.sourceRoot() + '/jsconfig.json', this.applicationName + '/jsconfig.json');
-    this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
-    this.template(this.sourceRoot() + '/bin/www', this.applicationName + '/bin/www', context);
-    this.copy(this.sourceRoot() + '/tsd.json', this.applicationName + '/tsd.json');
     
     this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
-    this.directory(this.sourceRoot() + '/images', this.applicationName + '/images');
-    this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
-    this.directory(this.sourceRoot() + '/styles', this.applicationName + '/styles');
     this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
     this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
-    this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');
-    this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
+
   },
   
-  _writingExpressTS: function () {
-    var context = {
-      appName: this.applicationName
-    };
-
-    this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
-
-    this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
-    this.copy(this.sourceRoot() + '/app.ts', this.applicationName + '/app.ts');
-    this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
-    this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
-    this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
-    this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
-    this.copy(this.sourceRoot() + '/tsconfig.json', this.applicationName + '/tsconfig.json');
-    this.copy(this.sourceRoot() + '/tsd.json', this.applicationName + '/tsd.json');
-    this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
-    this.template(this.sourceRoot() + '/bin/www.ts', this.applicationName + '/bin/www.ts', context);
-    this.template(this.sourceRoot() + '/bin/www.js', this.applicationName + '/bin/www.js', context);
-
-    this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
-    this.directory(this.sourceRoot() + '/images', this.applicationName + '/images');
-    this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
-    this.directory(this.sourceRoot() + '/styles', this.applicationName + '/styles');
-    this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
-    this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
-    this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');
-    this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
-  },
-
   install: function () {
     
     switch (this.type) {
