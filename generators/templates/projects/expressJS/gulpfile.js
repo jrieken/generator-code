@@ -45,8 +45,8 @@ gulp.task('nodemon', function (cb) {
     var started = false;
 
     return nodemon({
-        script: './bin/www',
-        watch: ['*.js', 'bin/www', 'views/**/*.*', 'routes/**/*.js']
+        script: 'bin/www',
+        watch: ['bin/www', '*.js', '*.jade']
     }).on('start', function () {
         if (!started) {
             cb();

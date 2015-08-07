@@ -5,7 +5,7 @@ router.get('/', function (req, res, next) {
     res.render('index', { title: 'Visual Studio Code!' });
 });
 /* GET readme. */
-router.get('/readme', function (req, res, next) {
-    res.render('readme');
+router.get('/quickstart', function (req, res, next) {
+    res.render('quickstart');
 });
 module.exports = router;

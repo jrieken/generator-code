@@ -23,7 +23,7 @@
 			// Environment variables passed to the program.
 			"env": { },
 			// Use JavaScript source maps (if they exist).
-			"sourceMaps": false,
+			"sourceMaps": true,
 			// If JavaScript source maps are enabled, the generated code is expected in this directory.
 			"outDir": null
 		}, 
