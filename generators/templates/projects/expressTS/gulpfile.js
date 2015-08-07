@@ -12,7 +12,7 @@ var cp = require('child_process');
  */
 gulp.task('watch', function() {
     gulp.watch('**/*.ts', ['tsc']);
-    gulp.watch('**/*.less', ['less']);
+    gulp.watch('styles/**/*.less', ['less']);
 }); 
 
 /**
@@ -42,7 +42,7 @@ gulp.task('test', function () {
 gulp.task('browser-sync', ['nodemon'], function () {
     browserSync.init(null, {
         proxy: "http://localhost:3000",
-        files: ["public/**/*.*"],
+        files: ["public/**/*.*", "views/**/*.*"],
         browser: "google chrome",
         port: 7000,
     });
@@ -56,7 +56,7 @@ gulp.task('nodemon', function (cb) {
 
     return nodemon({
         script: './bin/www',
-        watch: ['*.js', 'bin/**/*.js', '**/*.jade', 'routes/**/*.js' ]
+        watch: ['*.js']
     }).on('start', function () {
         if (!started) {
             cb();
@@ -93,4 +93,4 @@ function runTSC(directory, done) {
     });
 }
 
-gulp.task('default', ['tsc']);
+gulp.task('default', ['watch']);

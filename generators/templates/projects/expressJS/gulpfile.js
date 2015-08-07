@@ -5,12 +5,13 @@ var mocha = require('gulp-mocha');
 var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 
+
 /**
  * watch for any LESS file changes
  * if a file change is detected, run the LESS compile gulp task
  */
 gulp.task('watch', function() {
-    gulp.watch('**/*.less', ['less']);
+    gulp.watch('styles/**/*.less', ['less']);
 }); 
 
 /**
@@ -40,7 +41,7 @@ gulp.task('test', function () {
 gulp.task('browser-sync', ['nodemon'], function () {
     browserSync.init(null, {
         proxy: "http://localhost:3000",
-        files: ["public/**/*.*"],
+        files: ["public/**/*.*", "views/**/*.*"],
         browser: "google chrome",
         port: 7000,
     });
@@ -54,7 +55,7 @@ gulp.task('nodemon', function (cb) {
 
     return nodemon({
         script: 'bin/www',
-        watch: ['bin/www', '*.js', '*.jade']
+        watch: ['bin/www', '*.js']
     }).on('start', function () {
         if (!started) {
             cb();
@@ -69,4 +70,4 @@ gulp.task('nodemon', function (cb) {
     });
 });
 
-gulp.task('default', ['less']);
+gulp.task('default', ['watch']);
