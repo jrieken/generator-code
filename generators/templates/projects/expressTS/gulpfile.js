@@ -7,7 +7,16 @@ var nodemon = require('gulp-nodemon');
 var cp = require('child_process');
 
 /**
- * task to compile less files from the ./styles folder
+ * watch for any TypeScript or LESS file changes
+ * if a file change is detected, run the TypeScript compile or LESS compile gulp tasks
+ */
+gulp.task('watch', function() {
+    gulp.watch('**/*.ts', ['tsc']);
+    gulp.watch('**/*.less', ['less']);
+}); 
+
+/**
+ * compile less files from the ./styles folder
  * into css files to the ./public/stylesheets folder
  */
 gulp.task('less', function () {
@@ -19,7 +28,7 @@ gulp.task('less', function () {
 });
 
 /**
- * task to run mocha tests in the ./tests folder
+ * run mocha tests in the ./tests folder
  */
 gulp.task('test', function () {
     return gulp.src('./tests/test*.js', { read: false })
@@ -28,7 +37,7 @@ gulp.task('test', function () {
 });
 
 /**
- * task to run browser-sync on for client changes
+ * run browser-sync on for client changes
  */
 gulp.task('browser-sync', ['nodemon'], function () {
     browserSync.init(null, {
@@ -40,14 +49,14 @@ gulp.task('browser-sync', ['nodemon'], function () {
 });
 
 /**
- * task to run nodemon on server javascript file changes
+ * run nodemon on server file changes
  */
 gulp.task('nodemon', function (cb) {
     var started = false;
 
     return nodemon({
-        script: 'bin/www',
-        watch: ['bin/www', '*.js', '*.jade']
+        script: './bin/www',
+        watch: ['*.js', 'bin/**/*.js', '**/*.jade', 'routes/**/*.js' ]
     }).on('start', function () {
         if (!started) {
             cb();
@@ -62,16 +71,9 @@ gulp.task('nodemon', function (cb) {
     });
 });
 
-/**
- * task to watch for any TypeScript file changes
- * if a file change is detected, run the TypeScript compile gulp task
- */
-gulp.task('tsc-watch', function() {
-    gulp.watch('**/*.ts', ['tsc']);
-}); 
 
 /**
- * task to compile TypeScript files based on tsconfig.json in root
+ * compile TypeScript files based on tsconfig.json in root
  */
 gulp.task('tsc', function (done) {
     runTSC('.', done);

@@ -6,7 +6,15 @@ var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 
 /**
- * task to compile less files from the ./styles folder
+ * watch for any LESS file changes
+ * if a file change is detected, run the LESS compile gulp task
+ */
+gulp.task('watch', function() {
+    gulp.watch('**/*.less', ['less']);
+}); 
+
+/**
+ * compile less files from the ./styles folder
  * into css files to the ./public/stylesheets folder
  */
 gulp.task('less', function () {
@@ -18,7 +26,7 @@ gulp.task('less', function () {
 });
 
 /**
- * task to run mocha tests in the ./tests folder
+ * run mocha tests in the ./tests folder
  */
 gulp.task('test', function () {
     return gulp.src('./tests/test*.js', { read: false })
@@ -27,7 +35,7 @@ gulp.task('test', function () {
 });
 
 /**
- * task to run browser-sync on for client changes
+ * run browser-sync on for client changes
  */
 gulp.task('browser-sync', ['nodemon'], function () {
     browserSync.init(null, {
@@ -39,7 +47,7 @@ gulp.task('browser-sync', ['nodemon'], function () {
 });
 
 /**
- * task to run nodemon on server javascript file changes
+ * run nodemon on server file changes
  */
 gulp.task('nodemon', function (cb) {
     var started = false;
