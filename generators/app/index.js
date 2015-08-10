@@ -109,7 +109,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
       appName: this.applicationName
     };
 
-    //copy common files
+    //copy files and folders that are common to both JS and TS 
     this.sourceRoot(path.join(__dirname, '../templates/projects/expressCommon'));
     
     this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
@@ -120,6 +120,15 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
     this.copy(this.sourceRoot() + '/tsd.json', this.applicationName + '/tsd.json');
         
+    // copy common file and folder names that have different content
+    this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
+    this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
+    this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
+    this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
+    this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
+    this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
+    
+    // now copy app specific files and folders
     switch (this.type) {
       case 'expressJS':
         this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
@@ -143,18 +152,9 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         
       default:
         // unknown why we are here, get out!
-        return;
+        break;
     }
     
-    // common file and folder names (content is different)
-    this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
-    this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
-    this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
-    
-    this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
-    this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
-    this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
-
   },
   
   install: function () {
