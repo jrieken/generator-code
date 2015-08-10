@@ -120,14 +120,6 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
     this.copy(this.sourceRoot() + '/tsd.json', this.applicationName + '/tsd.json');
         
-    // copy common file and folder names that have different content
-    this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
-    this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
-    this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
-    this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
-    this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
-    this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
-    
     // now copy app specific files and folders
     switch (this.type) {
       case 'expressJS':
@@ -152,8 +144,17 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         
       default:
         // unknown why we are here, get out!
-        break;
+        return;
     }
+    
+    // NOTE: this.sourceRoot is set in the switch statement above
+    // copy common file and folder names that have different content
+    this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
+    this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
+    this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
+    this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
+    this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
+    this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
     
   },
   
