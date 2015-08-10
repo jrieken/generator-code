@@ -21,8 +21,8 @@
             "problemMatcher": "$tsc"
         },
         {
-            "taskName": "tsc-watch",
-            "problemMatcher": "$tsc"
+            "taskName": "watch",
+            "problemMatcher": ["$tsc", "$lessCompile"]
         }
         
     ]
