@@ -1,5 +1,5 @@
 # README
-## <%= appName %> 
+## This the readme for your application "<%= appName %>" 
 -------------------
 ### Visual Studio Code has *awesome* Markdown support!
 
@@ -8,7 +8,7 @@
 * Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
 
 ### For more information
-* [Markdown Syntax Reference](http://daringfireball.net)
 * [Visual Studio Code's Markdown Support](http://code.visualstudio.com/languages/markdown)
+* [Markdown Syntax Reference](http://daringfireball.net)
 
 ** Enjoy!**
