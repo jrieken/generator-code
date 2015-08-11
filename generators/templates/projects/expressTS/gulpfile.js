@@ -39,7 +39,7 @@ gulp.task('test', function () {
 /**
  * run browser-sync on for client changes
  */
-gulp.task('browser-sync', ['nodemon'], function () {
+gulp.task('browser-sync', ['nodemon', 'watch'], function () {
     browserSync.init(null, {
         proxy: "http://localhost:3000",
         files: ["public/**/*.*", "views/**/*.*"],
@@ -93,4 +93,4 @@ function runTSC(directory, done) {
     });
 }
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['browser-sync']);
