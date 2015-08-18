@@ -1,6 +1,6 @@
 
 # generator-code
-------
+
 > A [Yeoman](http://yeoman.io) Generator for [Visual Studio Code](http://code.visualstudio.com)
 
 <img width="506" alt="generator-code" src="https://cloud.githubusercontent.com/assets/1487073/9344348/d80a02f0-45bc-11e5-8f33-fe7f2a44bbd4.png">
@@ -42,6 +42,4 @@ code .
 
 ## License
 
-MIT
-
-[readme](README)
+[MIT](LICENSE)
