@@ -8,7 +8,7 @@
 * Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
 
 ### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/languages/markdown)
+* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
 * [Markdown Syntax Reference](http://daringfireball.net)
 
 ** Enjoy!**
