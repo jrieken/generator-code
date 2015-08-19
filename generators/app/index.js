@@ -199,11 +199,16 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         this.log('\r\n');
 
         if (this.gitInit) {
-          this.log('Initializing git repo...');
           this.spawnCommand('git', ['init', '--quiet']); 
         }
 
-        this.log('Your project ' + chalk.bold(this.applicationName) + ' has been created...To start Visual Studio Code, use the following commands:');
+        this.log('Your project ' + chalk.bold(this.applicationName) + ' has been created!');
+        this.log('');
+        this.log('It is highly recommended to install the TypeScript Definition File Manager (tsd) globally using the following command:');
+        this.log('');
+        this.log(chalk.bold('npm install tsd -g'));
+        this.log('');
+        this.log('To start editing with Visual Studio Code, use the following commands:');
         this.log('');
         this.log(chalk.bold('cd ' + this.applicationName));
         this.log(chalk.bold('code .'));
