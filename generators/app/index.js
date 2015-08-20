@@ -37,7 +37,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
           value: 'expressTS'
         },
         {
-          name: 'ASP.NET ' + chalk.bold('5') +' Application',
+          name: 'ASP.NET ' + chalk.bold('5') + ' Application',
           value: 'aspnet'
         }
       ]
@@ -52,22 +52,22 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
   askForName: function () {
     var done = this.async();
     var app = 'expressApp';
-    
+
     var prompts = [{
       name: 'applicationName',
       message: 'What\'s the name of your application?',
       default: app
     },
-    {
-      name: 'gitInit',
-      type: 'confirm',
-      message: 'Initialize a git repository?',
-      default: true
-    }];
+      {
+        name: 'gitInit',
+        type: 'confirm',
+        message: 'Initialize a git repository?',
+        default: true
+      }];
 
     switch (this.type) {
       case 'expressJS':
-        // fall through
+      // fall through
       case 'expressTS':
         this.prompt(prompts, function (props) {
           this.templatedata.namespace = props.applicationName;
@@ -90,7 +90,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
 
     switch (this.type) {
       case 'expressJS':
-        // fall through
+      // fall through
       case 'expressTS':
         this._writingExpress();
         break;
@@ -104,14 +104,14 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
   },
 
   _writingExpress: function () {
-    
+
     var context = {
       appName: this.applicationName
     };
 
     //copy files and folders that are common to both JS and TS 
     this.sourceRoot(path.join(__dirname, '../templates/projects/expressCommon'));
-    
+
     this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
     this.directory(this.sourceRoot() + '/styles', this.applicationName + '/styles');
     this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');
@@ -130,7 +130,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         this.copy(this.sourceRoot() + '/jsconfig.json', this.applicationName + '/jsconfig.json');
         this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
         break;
-        
+
       case 'expressTS':
         this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
         //copy ts specific files
@@ -141,7 +141,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         this.copy(this.sourceRoot() + '/tsconfig.json', this.applicationName + '/tsconfig.json');
         this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
         break;
-        
+
       default:
         // unknown why we are here, get out!
         return;
@@ -155,38 +155,38 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
     this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
     this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
-    
-  },
-  
-  install: function () {
-    
-    switch (this.type) {
 
-      case 'expressJS':
+  },
+
+  install: function () {
+
+      switch (this.type) {
+
+        case 'expressJS':
         // fall through
       
-      case 'expressTS':
-        
-        if (this.noNpmInstall) {
+        case 'expressTS':
+
+          if (this.noNpmInstall) {
+            break;
+          }
+
+          process.chdir(this.applicationName);
+
+          this.installDependencies({
+            bower: false,
+            npm: true
+          });
+
           break;
-        } 
-        
-        process.chdir(this.applicationName);
-        
-        this.installDependencies({
-           bower: false,
-           npm: true
-        });
-        
-        break;
 
-      case 'aspnet':
-        // aspnet wil do its own installation
-        break;
+        case 'aspnet':
+          // aspnet wil do its own installation
+          break;
 
-      default:
-        break;
-    }
+        default:
+          break;
+      }
   },
 
   end: function () {
@@ -194,12 +194,12 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     switch (this.type) {
 
       case 'expressJS':
-        // fall through
+      // fall through
       case 'expressTS':
         this.log('\r\n');
 
         if (this.gitInit) {
-          this.spawnCommand('git', ['init', '--quiet']); 
+          this.spawnCommand('git', ['init', '--quiet']);
         }
 
         this.log('Your project ' + chalk.bold(this.applicationName) + ' has been created!');
