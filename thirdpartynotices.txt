@@ -1,0 +1,9 @@
+
+THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+Do Not Translate or Localize
+
+This file provides information regarding components that are being relicensed to you by Microsoft under Microsoft's generator-code software licensing terms.  Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
+
+Microsoft is offering you a license to use the following components subject to the Microsoft generator-code software license terms, except that components licensed under open source licenses requiring that such component remain under the original license are being made available to you by Microsoft under the original licensing terms.
+
+1.	definitelyTyped version 0.0.1 (https://github.com/borisyankov/DefinitelyTyped)
