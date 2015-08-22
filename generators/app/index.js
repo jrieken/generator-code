@@ -202,20 +202,18 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
           this.spawnCommand('git', ['init', '--quiet']);
         }
 
-        this.log('Your project ' + chalk.bold(this.applicationName) + ' has been created!');
+        this.log('Your project ' + chalk.bold(this.applicationName) + ' has been created! Next steps:');
         this.log('');
-        this.log('Next Steps:');
-        this.log('');
-        this.log('We recommended installing the TypeScript Definition File Manager (tsd) globally using the following command. This will let you easily download additional definition files to any folder.');
+        this.log('We recommended installing the TypeScript Definition File Manager (http://definitelytyped.org/tsd/) globally using the following command. This will let you easily download additional definition files to any folder.');
         this.log('');
         this.log(chalk.bold('     npm install tsd -g'));
         this.log('');
-        this.log('To start editing with Visual Studio Code, use the following commands');
+        this.log('To start editing with Visual Studio Code, use the following commands.');
         this.log('');
         this.log(chalk.bold('     cd ' + this.applicationName));
         this.log(chalk.bold('     code .'));
         this.log(' ');
-        this.log('For more information, visit http://code.visualstudio.com and follow us @code');
+        this.log('For more information, visit http://code.visualstudio.com and follow us @code.');
         this.log('\r\n');
 
         break;
