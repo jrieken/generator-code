@@ -34,6 +34,8 @@ Use the cursor up/down keys to choose the type of application you wish to create
  
 * **ASP.NET 5 Application:** Chains in the [ASP.NET Yeoman Generator](https://github.com/OmniSharp/generator-aspnet), allowing you to build a number of different types of ASP.NET 5 applications such as a Web App, Class Library, and a Web API Applications along with a number of sub generators for creating individual files.
 
+We also recommend installing the [TypeScript Definition Manger](http://definitelytyped.org/tsd/) tool globally so that you can use the tool to download TypeScript definitions in any folder.
+
 After the generator runs, simply start Visual Studio Code and enjoy!
 
 ```bash
