@@ -152,7 +152,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
     this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
     this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
-    this.directory(this.sourceRoot() + '/.settings', this.applicationName + '/.settings');
+    this.directory(this.sourceRoot() + '/.vscode', this.applicationName + '/.vscode');
     this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
     this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
 
