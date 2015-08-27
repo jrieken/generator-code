@@ -35,11 +35,12 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         {
           name: 'Node/Express application (' + chalk.bold('TypeScript') + ')',
           value: 'expressTS'
-        },
-        {
-          name: 'ASP.NET ' + chalk.bold('5') + ' Application',
-          value: 'aspnet'
         }
+        // ,
+        // {
+        //   name: 'ASP.NET ' + chalk.bold('5') + ' Application',
+        //   value: 'aspnet'
+        // }
       ]
     }];
 
@@ -78,15 +79,15 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         }.bind(this));
         break;
 
-      case 'aspnet':
-        // generator-aspnet is installed alongside generator-code
-        this.composeWith('aspnet', {}, {
-          local: require.resolve('generator-aspnet')
-        });
+      // case 'aspnet':
+      //   // generator-aspnet is installed alongside generator-code
+      //   this.composeWith('aspnet', {}, {
+      //     local: require.resolve('generator-aspnet')
+      //   });
 
-        done();
+      //   done();
         
-        break;
+      //   break;
     }
   },
 
@@ -99,9 +100,9 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
       case 'expressTS':
         this._writingExpress();
         break;
-      case 'aspnet':
-        //aspnet generator will do its own writing
-        break;
+      // case 'aspnet':
+      //   //aspnet generator will do its own writing
+      //   break;
       default:
         //unknown project type
         break;
@@ -194,9 +195,9 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
 
           break;
 
-        case 'aspnet':
-          // aspnet wil do its own installation
-          break;
+        // case 'aspnet':
+        //   // aspnet wil do its own installation
+        //   break;
 
         default:
           break;
@@ -232,9 +233,9 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
 
         break;
 
-      case 'aspnet':
-        // aspnet wil handle its end
-        break;
+      // case 'aspnet':
+      //   // aspnet wil handle its end
+      //   break;
 
       default:
         break;
