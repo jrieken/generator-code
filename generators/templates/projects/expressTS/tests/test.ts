@@ -1,4 +1,6 @@
-import assert = require("assert");
+/// <reference path="../src/tsd.d.ts" />
+
+import assert = require('assert');
 
 describe('Array', function(){
   describe('#indexOf()', function(){

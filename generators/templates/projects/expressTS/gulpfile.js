@@ -10,9 +10,10 @@ var cp = require('child_process');
  * watch for any TypeScript or LESS file changes
  * if a file change is detected, run the TypeScript compile or LESS compile gulp tasks
  */
-gulp.task('watch', function() {
-    gulp.watch('**/*.ts', ['tsc']);
-    gulp.watch('styles/**/*.less', ['less']);
+gulp.task('watch', function () {
+    gulp.watch('src/**/*.ts', ['compileSources']);
+    gulp.watch('tests/**/*.ts', ['compileTests']);
+    gulp.watch('src/styles/**/*.less', ['less']);
 }); 
 
 /**
@@ -20,17 +21,18 @@ gulp.task('watch', function() {
  * into css files to the ./public/stylesheets folder
  */
 gulp.task('less', function () {
-    return gulp.src('./styles/**/*.less')
+    return gulp.src('./src/styles/**/*.less')
         .pipe(less({
             paths: [path.join(__dirname, 'less', 'includes')]
         }))
-        .pipe(gulp.dest('./public/stylesheets'));
+        .pipe(gulp.dest('./src/public/stylesheets'));
 });
 
 /**
  * run mocha tests in the ./tests folder
  */
 gulp.task('test', function () {
+
     return gulp.src('./tests/test*.js', { read: false })
     // gulp-mocha needs filepaths so you can't have any plugins before it 
         .pipe(mocha());
@@ -42,7 +44,7 @@ gulp.task('test', function () {
 gulp.task('browser-sync', ['nodemon', 'watch'], function () {
     browserSync.init(null, {
         proxy: "http://localhost:3000",
-        files: ["public/**/*.*", "views/**/*.*"],
+        files: ["public/**/*.*", "src/views/**/*.*"],
         browser: "google chrome",
         port: 7000,
     });
@@ -55,7 +57,7 @@ gulp.task('nodemon', function (cb) {
     var started = false;
 
     return nodemon({
-        script: './bin/www',
+        script: './src/www',
         watch: ['*.js']
     }).on('start', function () {
         if (!started) {
@@ -75,8 +77,12 @@ gulp.task('nodemon', function (cb) {
 /**
  * compile TypeScript files based on tsconfig.json in root
  */
-gulp.task('tsc', function (done) {
-    runTSC('.', done);
+gulp.task('compileSources', function (done) {
+    runTSC('./src', done);
+});
+
+gulp.task('compileTests', function (done) {
+    runTSC('./tests', done);
 });
 
 function runTSC(directory, done) {

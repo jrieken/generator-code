@@ -3,7 +3,7 @@ Press Ctrl+Shift+V (Windows, Linux) or Cmd+Shift+V (OSX) to preview this documen
 -->
 
 # Getting Started with Node, Express and Visual Studio Code
-This is an the [express-generator](http://expressjs.com/starter/generator.html) generated sample customized for development using [Visual Studio Code](http://code.visualstudio.com).  
+This is an [express-generator](http://expressjs.com/starter/generator.html) generated sample customized for development using [Visual Studio Code](http://code.visualstudio.com) and [TypeScript](http://www.typescriptlang.org/).  
 
 This example illustrates:
 - **Great IntelliSense**: [TypeScript definition files](https://github.com/borisyankov/DefinitelyTyped) provide IntelliSense for Node, Express, Mocha, and Gulp. Use [tsd](http://definitelytyped.org/tsd/) to install additional typings.
@@ -16,7 +16,7 @@ This example illustrates:
 
 - **Test**: [Mocha](http://mochajs.org/) is a popular test framework for Node applications. Press `Ctrl+Shift+T` (Windows, Linux) or `Cmd+Shift+T` (OS X) to run the tests.
 
-- **Debugging**: [Launch Configurations](https://code.visualstudio.com/Docs/debugging) are used for running your application under the debugger as well as launching the Mocha tests under the debugger. Open the Debug viewlet, select `Launch ./bin/www` and press `F5` to run the application.
+- **Debugging**: [Launch Configurations](https://code.visualstudio.com/Docs/debugging) are used for running your application under the debugger as well as launching the Mocha tests under the debugger. Open the Debug viewlet, select `Launch ./src/www` and press `F5` to run the application.
 
 - **Integration with existing tools**: [Task Configurations](https://code.visualstudio.com/Docs/tasks) allow for control over how individual [Gulp](http://gulpjs.com/) tasks are launched. Run individual tasks from the Command Palette by pressing `Ctrl+P` (Windows, Linux) or `Cmd+P` (OS X), type in `task` and then press `space` to see all of the tasks in the provided `gulpfile.js`.
 

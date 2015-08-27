@@ -1,11 +1,9 @@
 
-/// <reference path='../typings/tsd.d.ts' />
-
 /**
  * Module dependencies.
  */
 
-import app = require('../app');
+import app = require('./app');
 import debugModule = require('debug');
 import http = require('http');
 

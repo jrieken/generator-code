@@ -112,34 +112,49 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     //copy files and folders that are common to both JS and TS 
     this.sourceRoot(path.join(__dirname, '../templates/projects/expressCommon'));
 
-    this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
-    this.directory(this.sourceRoot() + '/styles', this.applicationName + '/styles');
-    this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');
-    this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
-    this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
-    this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
-    this.copy(this.sourceRoot() + '/tsd.json', this.applicationName + '/tsd.json');
         
     // now copy app specific files and folders
     switch (this.type) {
       case 'expressJS':
         this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
-        //copy js specific files
+        
+        this.directory(this.sourceRoot() + '/.vscode', this.applicationName + '/.vscode');
         this.template(this.sourceRoot() + '/bin/www', this.applicationName + '/bin/www', context);
-        this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
-        this.copy(this.sourceRoot() + '/jsconfig.json', this.applicationName + '/jsconfig.json');
+        this.directory(this.sourceRoot() + '/public', this.applicationName + '/public');
+        this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
+        this.directory(this.sourceRoot() + '/styles', this.applicationName + '/styles');
+        this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
+        this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');
         this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
+        this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
+        this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
+        this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
+        this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
+        this.copy(this.sourceRoot() + '/jsconfig.json', this.applicationName + '/jsconfig.json');
+        this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
+        this.copy(this.sourceRoot() + '/tsd.json', this.applicationName + '/tsd.json');
+        this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
+        
         break;
 
       case 'expressTS':
         this.sourceRoot(path.join(__dirname, '../templates/projects/' + this.type));
-        //copy ts specific files
-        this.template(this.sourceRoot() + '/bin/www.ts', this.applicationName + '/bin/www.ts', context);
-        this.template(this.sourceRoot() + '/bin/www.js', this.applicationName + '/bin/www.js', context);
-        this.copy(this.sourceRoot() + '/app.ts', this.applicationName + '/app.ts');
-        this.copy(this.sourceRoot() + '/app.js', this.applicationName + '/app.js');
-        this.copy(this.sourceRoot() + '/tsconfig.json', this.applicationName + '/tsconfig.json');
-        this.directory(this.sourceRoot() + '/views', this.applicationName + '/views');
+
+        this.directory(this.sourceRoot() + '/.vscode', this.applicationName + '/.vscode');
+        this.directory(this.sourceRoot() + '/src', this.applicationName + '/src');
+        this.template(this.sourceRoot() + '/www.ts', this.applicationName + '/src/www.ts', context);
+        this.template(this.sourceRoot() + '/www.js', this.applicationName + '/src/www.js', context);
+        this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
+        this.directory(this.sourceRoot() + '/typings', this.applicationName + '/typings');
+        this.copy(this.sourceRoot() + '/_gitignore', this.applicationName + '/.gitignore');
+        this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
+        this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
+        this.template(this.sourceRoot() + '/README.md', this.applicationName + '/README.md', context);
+        this.copy(this.sourceRoot() + '/tsd.json', this.applicationName + '/tsd.json');
+        this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
+
+
+
         break;
 
       default:
@@ -149,12 +164,6 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
     
     // NOTE: this.sourceRoot is set in the switch statement above
     // copy common file and folder names that have different content
-    this.template(this.sourceRoot() + '/_package.json', this.applicationName + '/package.json', context);
-    this.copy(this.sourceRoot() + '/vscodequickstart.md', this.applicationName + '/vscodequickstart.md');
-    this.copy(this.sourceRoot() + '/gulpfile.js', this.applicationName + '/gulpfile.js');
-    this.directory(this.sourceRoot() + '/.vscode', this.applicationName + '/.vscode');
-    this.directory(this.sourceRoot() + '/routes', this.applicationName + '/routes');
-    this.directory(this.sourceRoot() + '/tests', this.applicationName + '/tests');
 
   },
 

@@ -1,8 +1,7 @@
-/// <reference path='../typings/tsd.d.ts' />
 /**
  * Module dependencies.
  */
-var app = require('../app');
+var app = require('./app');
 var debugModule = require('debug');
 var http = require('http');
 var debug = debugModule('<%= appName %>:server');
@@ -70,3 +69,4 @@ function onListening() {
         : 'port ' + addr.port;
     debug('Listening on ' + bind);
 }
+//# sourceMappingURL=www.js.map

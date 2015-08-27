@@ -7,17 +7,21 @@
     ],
     "tasks": [
         {
-            "taskName": "test",
-            "args": [],
-            "isTestCommand": true
+            "taskName": "compileSources",
+            "isBuildCommand": true,
+            "problemMatcher": "$tsc"
         },
         {
             "taskName": "less",
             "problemMatcher": "$lessCompile"
         },
         {
-            "taskName": "tsc",
-            "isBuildCommand": true,
+            "taskName": "test",
+            "args": [],
+            "isTestCommand": true
+        },
+        {
+            "taskName": "compileTests",
             "problemMatcher": "$tsc"
         },
         {

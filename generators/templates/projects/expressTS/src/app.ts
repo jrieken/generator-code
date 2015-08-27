@@ -5,7 +5,7 @@ import logger = require('morgan');
 import cookieParser = require('cookie-parser');
 import bodyParser = require('body-parser');
 
-import routes = require('./routes/index');
+import routes = require('./routes/index'); 
 import users = require('./routes/users');
 
 var app: express.Express = express();

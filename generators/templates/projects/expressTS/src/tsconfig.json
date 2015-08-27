@@ -6,9 +6,5 @@
         "noImplicitAny": false,
         "removeComments": false,
         "preserveConstEnums": true
-	},
-	"files": [
-		"./bin/www.ts",
-		"./tests/test.ts"
-	]
+	}
 }
