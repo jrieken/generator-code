@@ -7,7 +7,7 @@
     ],
     "tasks": [
         {
-            "taskName": "compileSources",
+            "taskName": "build",
             "isBuildCommand": true,
             "problemMatcher": "$tsc"
         },
@@ -21,8 +21,12 @@
             "isTestCommand": true
         },
         {
-            "taskName": "compileTests",
+            "taskName": "buildTests",
             "problemMatcher": "$tsc"
+        },
+        {
+            "taskName": "buildAll",
+            "problemMatcher": ["$tsc", "$lessCompile"]
         },
         {
             "taskName": "watch",

@@ -1,4 +1,3 @@
-/// <reference path="../src/tsd.d.ts" />
 var assert = require('assert');
 describe('Array', function () {
     describe('#indexOf()', function () {

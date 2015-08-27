@@ -1,4 +1,3 @@
-/// <reference path="../src/tsd.d.ts" />
 
 import assert = require('assert');
 

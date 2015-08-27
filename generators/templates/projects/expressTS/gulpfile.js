@@ -5,16 +5,7 @@ var mocha = require('gulp-mocha');
 var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 var cp = require('child_process');
-
-/**
- * watch for any TypeScript or LESS file changes
- * if a file change is detected, run the TypeScript compile or LESS compile gulp tasks
- */
-gulp.task('watch', function () {
-    gulp.watch('src/**/*.ts', ['compileSources']);
-    gulp.watch('tests/**/*.ts', ['compileTests']);
-    gulp.watch('src/styles/**/*.less', ['less']);
-}); 
+var tsb = require('gulp-tsb');
 
 /**
  * compile less files from the ./styles folder
@@ -44,7 +35,7 @@ gulp.task('test', function () {
 gulp.task('browser-sync', ['nodemon', 'watch'], function () {
     browserSync.init(null, {
         proxy: "http://localhost:3000",
-        files: ["public/**/*.*", "src/views/**/*.*"],
+        files: ["src/public/**/*.*", "src/views/**/*.*"],
         browser: "google chrome",
         port: 7000,
     });
@@ -73,30 +64,37 @@ gulp.task('nodemon', function (cb) {
     });
 });
 
+/**
+ * TypeScript build for /src folder, pipes in .d.ts files from typings folder 
+ */
+var tsConfigSrc = tsb.create('src/tsconfig.json');
+gulp.task('build', function () {
+    return gulp.src(['typings/**/*.ts', 'src/**/*.ts'])
+        .pipe(tsConfigSrc()) 
+        .pipe(gulp.dest(''));
+});
 
 /**
- * compile TypeScript files based on tsconfig.json in root
+ * TypeScript build for /tests folder, pipes in .d.ts files from typings folder
+ * as well as the src/tsd.d.ts which is referenced by tests/tsd.d.ts 
  */
-gulp.task('compileSources', function (done) {
-    runTSC('./src', done);
+var tsConfigTests = tsb.create('tests/tsconfig.json');
+gulp.task('buildTests', function () {
+    // pipe in all necessary files
+    return gulp.src(['typings/**/*.ts', 'tests/**/*.ts', 'src/tsd.d.ts'])
+        .pipe(tsConfigTests()) 
+        .pipe(gulp.dest(''));
 });
 
-gulp.task('compileTests', function (done) {
-    runTSC('./tests', done);
-});
+/**
+ * watch for any TypeScript or LESS file changes
+ * if a file change is detected, run the TypeScript or LESS compile gulp tasks
+ */
+gulp.task('watch', function () {
+    gulp.watch('src/**/*.ts', ['build']);
+    gulp.watch('tests/**/*.ts', ['buildTests']);
+    gulp.watch('src/styles/**/*.less', ['less']);
+}); 
 
-function runTSC(directory, done) {
-    var tscjs = path.join(process.cwd(), 'node_modules/typescript/bin/tsc.js');
-    var childProcess = cp.spawn('node', [tscjs, '-p', directory], { cwd: process.cwd() });
-    childProcess.stdout.on('data', function (data) {
-        console.log(data.toString());
-    });
-    childProcess.stderr.on('data', function (data) {
-        console.log(data.toString());
-    });
-    childProcess.on('close', function () {
-        done();
-    });
-}
-
+gulp.task('buildAll', ['build', 'buildTests', 'less']);
 gulp.task('default', ['browser-sync']);
