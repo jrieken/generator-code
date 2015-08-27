@@ -79,8 +79,7 @@ var VSCodeGenerator = yeoman.generators.Base.extend({
         break;
 
       case 'aspnet':
-        //this.composeWith('aspnet', { options: {} });
-        
+        // generator-aspnet is installed alongside generator-code
         this.composeWith('aspnet', {}, {
           local: require.resolve('generator-aspnet')
         });
