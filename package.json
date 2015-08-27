@@ -1,7 +1,10 @@
 {
   "name": "generator-code",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Yeoman generator for Visual Studio Code",
+  "keywords": [
+    "yeoman-generator"
+  ],
   "homepage": "http://code.visualstudio.com",
   "license": "MIT",
   "main": "generators/app/index.js",
