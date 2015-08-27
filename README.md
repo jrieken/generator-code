@@ -3,7 +3,8 @@
 
 > A [Yeoman](http://yeoman.io) Generator for [Visual Studio Code](http://code.visualstudio.com)
 
-<img width="745" alt="generator-code" src="https://cloud.githubusercontent.com/assets/1487073/9534504/c01e048a-4ccd-11e5-80c6-441f5d2252b4.png">
+<img width="491" alt="generator-code" src="https://cloud.githubusercontent.com/assets/1487073/9534574/33d3a448-4cce-11e5-9dd3-b57481b07756.png">
+
 
 ## Getting Started
 
