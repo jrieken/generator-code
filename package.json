@@ -1,8 +1,16 @@
 {
   "name": "generator-code",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Yeoman generator for Visual Studio Code",
-  "keywords": ["yeoman-generator"],
+  "keywords": [
+    "yeoman-generator",
+    "vscode",
+    "visual studio",
+    "visual studio code",
+    "vs code",
+    "node",
+    "express"
+   ],
   "repository": "microsoft/generator-code",
   "homepage": "http://code.visualstudio.com",
   "license": "MIT",
