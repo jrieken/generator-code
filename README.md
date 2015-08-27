@@ -3,7 +3,7 @@
 
 > A [Yeoman](http://yeoman.io) Generator for [Visual Studio Code](http://code.visualstudio.com)
 
-<img width="506" alt="generator-code" src="https://cloud.githubusercontent.com/assets/1487073/9344348/d80a02f0-45bc-11e5-8f33-fe7f2a44bbd4.png">
+<img width="745" alt="generator-code" src="https://cloud.githubusercontent.com/assets/1487073/9534504/c01e048a-4ccd-11e5-80c6-441f5d2252b4.png">
 
 ## Getting Started
 
@@ -32,8 +32,6 @@ Use the cursor up/down keys to choose the type of application you wish to create
 
 * **Node/Express application (TypeScript):** Similar to above application, only written in TypeScript, including gulp tasks to automatically compile your TypeScript to JavaScript.
  
-* **ASP.NET 5 Application:** Chains in the [ASP.NET Yeoman Generator](https://github.com/OmniSharp/generator-aspnet), allowing you to build a number of different types of ASP.NET 5 applications such as a Web App, Class Library, and a Web API Applications along with a number of sub generators for creating individual files.
-
 We also recommend installing the [TypeScript Definition File Manger](http://definitelytyped.org/tsd/) tool globally so that you can use the tool to download TypeScript definitions in any folder.
 
 After the generator runs, simply start Visual Studio Code and enjoy!
