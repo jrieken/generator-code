@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
+var express_1 = require('express');
+var index = express_1.Router();
 /* GET home page. */
-router.get('/', function (req, res, next) {
+index.get('/', function (req, res, next) {
     res.render('index', { title: 'Visual Studio Code!' });
 });
 /* GET Quick Start. */
-router.get('/quickstart', function (req, res, next) {
+index.get('/quickstart', function (req, res, next) {
     res.render('quickstart');
 });
-module.exports = router;
+exports.default = index;
 //# sourceMappingURL=index.js.map

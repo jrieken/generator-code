@@ -1,17 +1,15 @@
-import express = require('express');
-import path = require('path');
-import favicon = require('serve-favicon');
-import logger = require('morgan');
-import cookieParser = require('cookie-parser');
-import bodyParser = require('body-parser');
+import * as express from 'express';
+import * as logger from 'morgan';
+import * as bodyParser from 'body-parser';
+import {join} from 'path';
+import index from './routes/index';
+import users from './routes/users';
+import cookieParser = require('cookie-parser'); // this module doesn't use the ES6 default export yet
 
-import routes = require('./routes/index'); 
-import users = require('./routes/users');
-
-var app: express.Express = express();
+const app: express.Express = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -20,13 +18,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   var err = new Error('Not Found');
   err['status'] = 404;
   next(err);
@@ -37,26 +35,26 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  
-   app.use((err: any, req, res, next) => {
-    res.status(err['status'] || 500);
+
+  app.use((error: any, req, res, next) => {
+    res.status(error['status'] || 500);
     res.render('error', {
-      message: err.message,
-      error: err
+      message: error.message,
+      error
     });
   });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err: any, req, res, next) => {
-  res.status(err['status'] || 500);
+app.use((error: any, req, res, next) => {
+  res.status(error['status'] || 500);
   res.render('error', {
-    message: err.message,
+    message: error.message,
     error: {}
   });
   return null;
 });
 
 
-export = app;
+export default app;

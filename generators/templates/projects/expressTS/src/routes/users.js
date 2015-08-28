@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
+var express_1 = require('express');
+var users = express_1.Router();
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+users.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
-module.exports = router;
+exports.default = users;
 //# sourceMappingURL=users.js.map

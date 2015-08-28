@@ -1,22 +1,12 @@
-/**
- * Module dependencies.
- */
-var app = require('./app');
+var app_1 = require('./app');
 var debugModule = require('debug');
 var http = require('http');
 var debug = debugModule('<%= appName %>:server');
-/**
- * Get port from environment and store in Express.
- */
+// Get port from environment and store in Express.
 var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-/**
- * Create HTTP server.
- */
-var server = http.createServer(app);
-/**
- * Listen on provided port, on all network interfaces.
- */
+app_1.default.set('port', port);
+// create server and listen on provided port (on all network interfaces).
+var server = http.createServer(app_1.default);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

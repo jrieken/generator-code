@@ -1,14 +1,15 @@
-import express = require('express');
-var router = express.Router();
+import {Router} from 'express';
+
+const index = Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+index.get('/', function(req, res, next) {
   res.render('index', { title: 'Visual Studio Code!' });
 });
 
 /* GET Quick Start. */
-router.get('/quickstart', function(req, res, next) {
+index.get('/quickstart', function(req, res, next) {
   res.render('quickstart');
 });
 
-export = router;
+export default index;

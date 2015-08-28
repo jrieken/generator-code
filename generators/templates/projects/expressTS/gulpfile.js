@@ -7,10 +7,9 @@ var nodemon = require('gulp-nodemon');
 var cp = require('child_process');
 var tsb = require('gulp-tsb');
 
-/**
- * compile less files from the ./styles folder
- * into css files to the ./public/stylesheets folder
- */
+
+// compile less files from the ./styles folder
+// into css files to the ./public/stylesheets folder
 gulp.task('less', function () {
     return gulp.src('./src/styles/**/*.less')
         .pipe(less({
@@ -19,9 +18,8 @@ gulp.task('less', function () {
         .pipe(gulp.dest('./src/public/stylesheets'));
 });
 
-/**
- * run mocha tests in the ./tests folder
- */
+
+// run mocha tests in the ./tests folder
 gulp.task('test', function () {
 
     return gulp.src('./tests/test*.js', { read: false })
@@ -29,9 +27,7 @@ gulp.task('test', function () {
         .pipe(mocha());
 });
 
-/**
- * run browser-sync on for client changes
- */
+// run browser-sync on for client changes
 gulp.task('browser-sync', ['nodemon', 'watch'], function () {
     browserSync.init(null, {
         proxy: "http://localhost:3000",
@@ -41,9 +37,7 @@ gulp.task('browser-sync', ['nodemon', 'watch'], function () {
     });
 });
 
-/**
- * run nodemon on server file changes
- */
+// run nodemon on server file changes
 gulp.task('nodemon', function (cb) {
     var started = false;
 
@@ -64,9 +58,7 @@ gulp.task('nodemon', function (cb) {
     });
 });
 
-/**
- * TypeScript build for /src folder, pipes in .d.ts files from typings folder 
- */
+// TypeScript build for /src folder, pipes in .d.ts files from typings folder 
 var tsConfigSrc = tsb.create('src/tsconfig.json');
 gulp.task('build', function () {
     return gulp.src(['typings/**/*.ts', 'src/**/*.ts'])
@@ -74,10 +66,8 @@ gulp.task('build', function () {
         .pipe(gulp.dest(''));
 });
 
-/**
- * TypeScript build for /tests folder, pipes in .d.ts files from typings folder
- * as well as the src/tsd.d.ts which is referenced by tests/tsd.d.ts 
- */
+// TypeScript build for /tests folder, pipes in .d.ts files from typings folder
+// as well as the src/tsd.d.ts which is referenced by tests/tsd.d.ts 
 var tsConfigTests = tsb.create('tests/tsconfig.json');
 gulp.task('buildTests', function () {
     // pipe in all necessary files
@@ -86,10 +76,8 @@ gulp.task('buildTests', function () {
         .pipe(gulp.dest(''));
 });
 
-/**
- * watch for any TypeScript or LESS file changes
- * if a file change is detected, run the TypeScript or LESS compile gulp tasks
- */
+// watch for any TypeScript or LESS file changes
+// if a file change is detected, run the TypeScript or LESS compile gulp tasks
 gulp.task('watch', function () {
     gulp.watch('src/**/*.ts', ['build']);
     gulp.watch('tests/**/*.ts', ['buildTests']);
